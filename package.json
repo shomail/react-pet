@@ -6,7 +6,8 @@
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "format:check": "prettier --list-difference \"src/**/*.{js,jsx}\"",
-    "lint": "eslint \"**/*.{js,jsx}\" --quiet"
+    "lint": "eslint \"**/*.{js,jsx}\" --quiet",
+    "dev": "parcel src/index.html"
   },
   "keywords": [],
   "author": "shomail <shomail1988@gmail.com>",
@@ -14,6 +15,11 @@
   "devDependencies": {
     "eslint": "^5.15.3",
     "eslint-config-prettier": "^4.1.0",
+    "parcel-bundler": "^1.12.3",
     "prettier": "^1.16.4"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   }
 }
