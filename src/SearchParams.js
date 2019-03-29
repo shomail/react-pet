@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ANIMALS } from "petfinder-client";
 
 const SearchParams = () => {
   const [location, setLocation] = useState("Seattle, WA");
@@ -15,6 +16,23 @@ const SearchParams = () => {
             value={location}
             placeholder="Location"
           />
+        </label>
+        <label htmlFor="animal">
+          Animal
+          <select
+            name="animal"
+            id="animal"
+            value={animal}
+            onChange={e => SetAnimal(e.target.value)}
+            onBlur={e => SetAnimal(e.target.value)}
+          >
+            <option />
+            {ANIMALS.map(animal => (
+              <option key={animal} value={animal}>
+                {animal}
+              </option>
+            ))}
+          </select>
         </label>
         <button>Submit</button>
       </form>
