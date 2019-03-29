@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { ANIMALS } from "petfinder-client";
+import useDropdown from "./useDropdown";
 
 const SearchParams = () => {
   const [location, setLocation] = useState("Seattle, WA");
-  const [animal, SetAnimal] = useState("dog");
+  const [breeds, setBreeds] = useState([]);
+  const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
+  const [breed, BreedDropdown] = useDropdown("Breed", "havi", breeds);
 
   return (
     <div className="search-params">
@@ -17,23 +20,8 @@ const SearchParams = () => {
             placeholder="Location"
           />
         </label>
-        <label htmlFor="animal">
-          Animal
-          <select
-            name="animal"
-            id="animal"
-            value={animal}
-            onChange={e => SetAnimal(e.target.value)}
-            onBlur={e => SetAnimal(e.target.value)}
-          >
-            <option />
-            {ANIMALS.map(animal => (
-              <option key={animal} value={animal}>
-                {animal}
-              </option>
-            ))}
-          </select>
-        </label>
+        <AnimalDropdown />
+        <BreedDropdown />
         <button>Submit</button>
       </form>
     </div>
