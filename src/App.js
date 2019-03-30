@@ -3,10 +3,12 @@ import ReactDOM from "react-dom";
 import SearchParams from "./SearchParams";
 const App = () => {
   return (
-    <div>
-      <h1>Adopt Me Pet!</h1>
-      <SearchParams />
-    </div>
+    <React.StrictMode>
+      <div>
+        <h1>Adopt Me Pet!</h1>
+        <SearchParams />
+      </div>
+    </React.StrictMode>
   );
 };
 ReactDOM.render(<App />, document.getElementById("root"));
