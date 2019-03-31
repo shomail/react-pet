@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import pf, { ANIMALS } from "petfinder-client";
 import useDropdown from "./useDropdown";
+import Results from "./Results";
 
 const petfinder = pf({
   key: process.env.API_KEY,
@@ -53,6 +54,7 @@ const SearchParams = () => {
         <BreedDropdown />
         <button>Submit</button>
       </form>
+      <Results pets={pets} />
     </div>
   );
 };
