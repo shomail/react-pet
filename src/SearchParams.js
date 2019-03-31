@@ -8,11 +8,22 @@ const petfinder = pf({
 });
 
 const SearchParams = () => {
+  const [pets, setPets] = useState([]);
   const [location, setLocation] = useState("Seattle, WA");
   const [breeds, setBreeds] = useState([]);
   const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
 
+  const requestPets = async () => {
+    const res = await petfinder.pet.find({
+      location,
+      breed,
+      animal,
+      output: "full"
+    });
+
+    setPets(res.petfinder.pets.pet);
+  };
   useEffect(() => {
     setBreed("");
     setBreeds([]);
@@ -23,7 +34,12 @@ const SearchParams = () => {
 
   return (
     <div className="search-params">
-      <form>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          requestPets();
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
