@@ -19,6 +19,9 @@ class ErrorBoundary extends Component {
     }
   }
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/" />;
+    }
     if (this.state.hasError)
       return (
         <h1>
@@ -27,9 +30,6 @@ class ErrorBoundary extends Component {
         </h1>
       );
 
-    if (this.state.redirect) {
-      return <Redirect to="/" />;
-    }
     return this.props.children;
   }
 }
