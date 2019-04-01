@@ -4,12 +4,8 @@ import pf from "petfinder-client";
 const petfinder = pf();
 
 class Details extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true
-    };
-  }
+  state = { loading: true };
+
   async componentDidMount() {
     const data = await petfinder.pet.get({
       output: "full",
