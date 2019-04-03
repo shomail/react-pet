@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
-import { Router, Link } from "@reach/router";
-import SearchParams from "./SearchParams";
-import Details from "./Details";
+import { Router } from "@reach/router";
 import ThemeContext from "./ThemeContext";
 import NavBar from "./NavBar";
+
+const Details = lazy(() => import("./Details"));
+const SearchParams = lazy(() => import("./SearchParams"));
 
 const FourOhFour = () => <h1>404 Not found</h1>;
 
@@ -15,11 +16,13 @@ const App = () => {
       <ThemeContext.Provider value={theme}>
         <div>
           <NavBar />
-          <Router>
-            <SearchParams path="/" />
-            <Details path="/details/:id" />
-            <FourOhFour default />
-          </Router>
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Router>
+              <SearchParams path="/" />
+              <Details path="/details/:id" />
+              <FourOhFour default />
+            </Router>
+          </Suspense>
         </div>
       </ThemeContext.Provider>
     </React.StrictMode>

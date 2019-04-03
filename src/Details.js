@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, lazy } from "react";
 import pf from "petfinder-client";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
-import Modal from "./Modal";
+
+const Modal = lazy(() => import("./Modal"));
 
 const petfinder = pf();
 
