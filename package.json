@@ -8,7 +8,9 @@
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "format:check": "prettier --list-difference \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"**/*.{js,jsx}\" --quiet",
-    "dev": "parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "build": "parcel build --public-url ./dist/ src/index.html",
+    "start": "npm -s run build && babel-node server/index.js"
   },
   "keywords": [],
   "author": "shomail <shomail1988@gmail.com>",
@@ -30,8 +32,10 @@
     "prettier": "^1.16.4"
   },
   "dependencies": {
+    "@babel/node": "^7.2.2",
     "@emotion/core": "^10.0.10",
     "@reach/router": "^1.2.1",
+    "express": "^4.16.4",
     "petfinder-client": "^2.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
